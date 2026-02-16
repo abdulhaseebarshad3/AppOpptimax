@@ -109,7 +109,7 @@ const Home = () => {
                   National Aerospace Science & Technology Park
                 </span>
                 <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
-                 THE PROJECT OF STATICS  <br />
+                 THE PROJECT OF STRATEGIC  <br />
                   <span className="text-[#48b749]">NATIONAL </span> IMPORTANCE
                 </h1>
                 <p className="text-lg text-gray-200 mb-8 max-w-xl">
