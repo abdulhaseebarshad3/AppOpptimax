@@ -71,12 +71,12 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             <a href="mailto:hello@appoptimax.com" className="flex items-center gap-2 hover:text-[#00CFB8] transition-all duration-300">
               <Mail size={12} />
-              <span>hello@appoptimax.com</span>
+              <span>codesynergylab@gmail.com</span>
             </a>
             <span className="text-gray-700">|</span>
             <a href="tel:+1-415-555-0199" className="flex items-center gap-2 hover:text-[#00CFB8] transition-all duration-300">
               <Phone size={12} />
-              <span>+1 (415) 555-0199</span>
+              <span>+92 (346) 4323984</span>
             </a>
           </div>
 
