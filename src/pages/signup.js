@@ -1,10 +1,9 @@
-'use client'
-
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { User, Mail, Lock, Loader2 } from 'lucide-react'
 import AuthLayout from '../components/auth/AuthLayout'
 import { Auth, getAuthErrorMessage } from '../lib/auth'
+import { barePage } from '../lib/pageLayouts'
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' })
@@ -143,3 +142,5 @@ export default function SignupPage() {
     </AuthLayout>
   )
 }
+
+SignupPage.getLayout = barePage

@@ -1,10 +1,9 @@
-'use client'
-
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Mail, Loader2, ArrowLeft } from 'lucide-react'
 import AuthLayout from '../components/auth/AuthLayout'
 import { Auth, getAuthErrorMessage } from '../lib/auth'
+import { barePage } from '../lib/pageLayouts'
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')
@@ -75,3 +74,5 @@ export default function ForgotPasswordPage() {
     </AuthLayout>
   )
 }
+
+ForgotPasswordPage.getLayout = barePage

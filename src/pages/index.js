@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link'
@@ -8,7 +9,19 @@ import {
   CalendarDays, MapPin, Clock, Download, Rocket, Network, Building2,
   Compass, MessageCircle, X, Send, Bot
 } from 'lucide-react'
-import { TrustBadges, TestimonialsSlider, FAQAccordion } from '../sections/SharedSections'
+
+const TrustBadges = dynamic(
+  () => import('../sections/SharedSections').then((m) => m.TrustBadges),
+  { loading: () => null }
+)
+const TestimonialsSlider = dynamic(
+  () => import('../sections/SharedSections').then((m) => m.TestimonialsSlider),
+  { loading: () => null }
+)
+const FAQAccordion = dynamic(
+  () => import('../sections/SharedSections').then((m) => m.FAQAccordion),
+  { loading: () => null }
+)
 
 const ASOplatform = '/images/ASOplatform.png';
 const ASOHealth = '/images/ASOhealth.png';
@@ -41,6 +54,19 @@ const Home = () => {
   const [activeCard, setActiveCard] = useState(0)
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
+
+  const skipIntro = useCallback(() => {
+    setShowIntro(false)
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('introSeen', '1')
+    }
+  }, [])
+
+  useEffect(() => {
+    if (sessionStorage.getItem('introSeen') === '1') {
+      setShowIntro(false)
+    }
+  }, [])
 
   // Refs
   const introRef = useRef(null)
@@ -218,7 +244,7 @@ const Home = () => {
                 src={HERO_VIDEO_SRC}
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
               />
             </div>
 
@@ -266,7 +292,7 @@ const Home = () => {
             </motion.div>
 
             <button
-              onClick={() => setShowIntro(false)}
+              onClick={skipIntro}
               className="absolute bottom-10 right-10 z-20 flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full hover:bg-white/20 transition-colors group"
             >
               Skip Intro <SkipForward size={18} className="group-hover:translate-x-1 transition-transform" />

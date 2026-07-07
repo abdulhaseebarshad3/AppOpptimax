@@ -60,15 +60,6 @@ export default function LoginPage() {
     setInfo('')
     setLoading(true)
 
-    if (formData.email === 'qa@testing.com' && formData.password === 'testing123') {
-      completeLogin({
-        access: 'test-token',
-        refresh: 'test-refresh-token',
-        email: formData.email
-      })
-      return
-    }
-
     try {
       const res = await Auth.login(formData)
       completeLogin({

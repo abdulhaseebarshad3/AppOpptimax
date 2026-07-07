@@ -2,9 +2,6 @@ import '../index.css'
 import LayoutShell from '../components/LayoutShell'
 
 export default function App({ Component, pageProps }) {
-  return (
-    <LayoutShell>
-      <Component {...pageProps} />
-    </LayoutShell>
-  )
+  const getLayout = Component.getLayout ?? ((page) => <LayoutShell>{page}</LayoutShell>)
+  return getLayout(<Component {...pageProps} />)
 }

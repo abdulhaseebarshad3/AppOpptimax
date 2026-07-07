@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import Image from 'next/image'
 
 const LOGO = '/logo/AppOptimax.png'
 
@@ -20,8 +21,15 @@ export default function AuthLayout({ title, description, children }) {
 
         <div className="relative z-10 w-full max-w-md">
           <div className="text-center mb-8">
-            <Link href="/">
-              <img src={LOGO} alt="App Optimax logo" className="h-12 mx-auto mb-6" />
+            <Link href="/" className="inline-block">
+              <Image
+                src={LOGO}
+                alt="App Optimax logo"
+                width={180}
+                height={48}
+                priority
+                className="h-12 w-auto mx-auto mb-6"
+              />
             </Link>
           </div>
 

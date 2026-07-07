@@ -1,11 +1,10 @@
-'use client'
-
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Lock, Loader2, CheckCircle2 } from 'lucide-react'
 import AuthLayout from '../components/auth/AuthLayout'
 import { Auth } from '../lib/auth'
+import { barePage } from '../lib/pageLayouts'
 
 export default function ResetPasswordPage() {
   const router = useRouter()
@@ -108,3 +107,5 @@ export default function ResetPasswordPage() {
     </AuthLayout>
   )
 }
+
+ResetPasswordPage.getLayout = barePage
